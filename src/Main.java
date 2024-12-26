@@ -8,14 +8,7 @@ public class Main {
 
         List<Stock> stocks = netUtils.getStocks();
 
-        stocks.sort(new Comparator<Stock>() {
-            @Override
-            public int compare(Stock o1, Stock o2) {
-                Float val1 = new Float(o1.getValue());
-                Float val2 = new Float(o2.getValue());
-                return val1.compareTo(val2);
-            }
-        });
+        stocks.sort(Comparator.comparingDouble(Stock::getValue));
 
         System.out.println("Самая дешевая акция была на " +
                 stocks.get(0).getDate() + " со стоимостью " +
